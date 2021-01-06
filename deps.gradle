@@ -1,0 +1,70 @@
+ext {
+    versions = [
+            okHttp                  : "4.1.0",
+            retrofit                : "2.6.1",
+            retroCoroutine          : "0.9.2",
+            koin                    : "2.0.1",
+            glide                   : "4.9.0",
+            hawk                    : "2.0.1",
+            coroutines              : "1.2.2",
+            androidxViewModel       : "2.0.0",
+            androidxCompat          : "1.0.2",
+            androidxCore            : "1.0.2",
+            androidxConstraint      : "1.1.3",
+            anko                    : "0.10.8",
+            dialog                  : "3.1.1",
+            junitApi                : "5.5.2",
+            runtime                 : "5.5.2",
+            multidex                : "2.0.1"
+    ]
+
+    retrofitLibs = [
+            runtime      : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+            core         : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+            gsonConverter: "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+            coroutines   : "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$versions.retroCoroutine"
+    ]
+
+    httpLibs = [
+            httpInterceptor: "com.squareup.okhttp3:logging-interceptor:$versions.okHttp"
+    ]
+
+    koinLibs = [
+            core        : "org.koin:koin-android:$versions.koin", //Koin core
+            androidScope: "org.koin:koin-android-scope:$versions.koin", //Koin Android Scope
+            viewModel   : "org.koin:koin-android-viewmodel:$versions.koin", // Koin ViewModel
+    ]
+
+    glideLibs = [
+            core    : "com.github.bumptech.glide:glide:$versions.glide",
+            compiler: "com.github.bumptech.glide:glide:$versions.glide"
+    ]
+
+    hawkLib = [
+            core: "com.orhanobut:hawk:$versions.hawk"
+    ]
+
+    coroutineLibs = [
+            core   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
+            android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines"
+    ]
+
+    androidxLibs = [
+            viewModel         : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.androidxViewModel",
+            appcompat         : "androidx.appcompat:appcompat:$versions.androidxCompat",
+            coreKtx           : "androidx.core:core-ktx:$versions.androidxCore",
+            androidxConstraint: "androidx.constraintlayout:constraintlayout:$versions.androidxConstraint"
+    ]
+
+    ankoLibs = [
+            sqlite: "org.jetbrains.anko:anko-sqlite:$versions.anko"
+    ]
+
+    materialLibs = [
+            dialog     : "com.afollestad.material-dialogs:core:${versions.dialog}",
+            bottomSheet: "com.afollestad.material-dialogs:bottomsheets:${versions.dialog}"
+    ]
+    multidexLibs = [
+            multidex: "androidx.multidex:multidex:$versions.multidex"
+    ]
+}
