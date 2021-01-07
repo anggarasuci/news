@@ -51,7 +51,7 @@ class SourcesAdapter(
         notifyDataSetChanged()
     }
 
-    class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.name_txt
         val description: TextView = view.description_txt
         val categoryName: TextView = view.category_txt

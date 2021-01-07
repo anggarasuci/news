@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground">
+
+    <ImageView
+        android:id="@+id/banner_iv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/space_x25"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/author_txt"
+        style="@style/FontBold.Midnight.10"
+        android:layout_width="@dimen/space_x0"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_x2"
+        android:layout_marginTop="@dimen/space_half"
+        android:layout_marginEnd="@dimen/space_x2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/banner_iv"
+        tools:text="Author: Anggara" />
+
+    <TextView
+        android:id="@+id/published_txt"
+        style="@style/FontMedium.Mortar.10"
+        android:layout_width="@dimen/space_x0"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/author_txt"
+        app:layout_constraintStart_toStartOf="@id/author_txt"
+        app:layout_constraintTop_toBottomOf="@id/author_txt"
+        tools:text="7 Jan 2021" />
+
+    <TextView
+        android:id="@+id/title_txt"
+        style="@style/FontBold.Midnight.16"
+        android:layout_width="@dimen/space_x0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_x1"
+        app:layout_constraintEnd_toEndOf="@id/author_txt"
+        app:layout_constraintStart_toStartOf="@id/author_txt"
+        app:layout_constraintTop_toBottomOf="@id/published_txt"
+        tools:text="Steam is getting expanded Xbox controller support - The Verge" />
+
+    <TextView
+        android:id="@+id/description_txt"
+        style="@style/FontRegular.Mortar.14"
+        android:layout_width="@dimen/space_x0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_half"
+        app:layout_constraintEnd_toEndOf="@id/title_txt"
+        app:layout_constraintStart_toStartOf="@id/title_txt"
+        app:layout_constraintTop_toBottomOf="@id/title_txt"
+        tools:text="A Steam beta update has added new features for gamers using Xbox controllers. One of the more interesting additions is for Xbox Elite controller users, who can now use Valve’s software to bind the accessory’s rear paddles." />
+
+    <View
+        android:id="@+id/divider"
+        style="@style/Divider"
+        android:layout_marginTop="@dimen/space_x2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description_txt" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,4 +7,11 @@
         <item name="layout_constraintStart_toStartOf">parent</item>
         <item name="layout_constraintEnd_toEndOf">parent</item>
     </style>
+
+    <style name="AppTheme.ProgressBar.Horizontal" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:indeterminateTint">@color/black</item>
+        <item name="android:indeterminate">true</item>
+        <item name="android:layout_height">@dimen/space_x3</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
 </resources>
