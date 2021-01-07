@@ -19,7 +19,10 @@ class NewsRepository(
 
     suspend fun getArticles(params: RequestArticles): Result<ResponseArticles> {
         return when (val result = newsRemoteDataSource.getArticles(params)) {
-            is Result.Success -> Result.Success(result.value.content)
+            is Result.Success -> {
+                val response = ResponseArticles(articles = result.value.content)
+                Result.Success(response)
+            }
             is Result.Error -> result
         }
     }

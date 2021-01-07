@@ -7,19 +7,12 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="@dimen/space_x2"
-        android:id="@+id/tab_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_marginTop="@dimen/space_x2"
         android:layout_width="match_parent"
         android:layout_height="@dimen/space_x0"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tab_rv" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <View
         android:id="@+id/guideline"

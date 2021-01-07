@@ -21,7 +21,7 @@ class NewsRemoteDataSource(
             newsService.getSourcesAsync(url, paramsMap))
     }
 
-    suspend fun getArticles(param: RequestArticles): Result<Response<ResponseArticles>> {
+    suspend fun getArticles(param: RequestArticles): Result<Response<List<Article>>> {
         val paramsMap = hashMapOf(
             Param.SearchParam to param.keyword,
             Param.PageParam to param.pages.toString(),
@@ -29,7 +29,7 @@ class NewsRemoteDataSource(
             Param.SourceParam to param.sourceId
         )
         val url = baseUrl.plus(NewsService.ENDPOINT_HEADLINE)
-        return ResponseParser<ResponseArticles>().parseResult(
+        return ResponseParser<List<Article>>().parseResult(
             newsService.getArticlesAsync(url, paramsMap))
     }
 }

@@ -25,8 +25,16 @@
         <item name="android:textColor">@color/midnight</item>
     </style>
 
+    <style name="FontMedium.Mortar">
+        <item name="android:textColor">@color/mortar</item>
+    </style>
+
     <style name="FontBold.Midnight">
         <item name="android:textColor">@color/midnight</item>
+    </style>
+
+    <style name="FontBold.Midnight.10">
+        <item name="android:textSize">@dimen/text_size_10sp</item>
     </style>
 
     <style name="FontRegular.Midnight.12">
@@ -35,6 +43,10 @@
 
     <style name="FontRegular.Mortar.14">
         <item name="android:textSize">@dimen/text_size_14sp</item>
+    </style>
+
+    <style name="FontMedium.Mortar.10">
+        <item name="android:textSize">@dimen/text_size_10sp</item>
     </style>
 
     <style name="FontBold.Midnight.16">

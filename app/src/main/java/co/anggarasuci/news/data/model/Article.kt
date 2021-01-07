@@ -1,5 +1,7 @@
 package co.anggarasuci.news.data.model
 
+import com.google.gson.annotations.SerializedName
+
 
 data class RequestArticles(
     val keyword: String = "",
@@ -18,7 +20,9 @@ data class Article(
     val title: String = "",
     val description: String = "",
     val url: String = "",
+    @SerializedName("urlToImage")
     val urlToImage: String = "",
+    @SerializedName("publishedAt")
     val publishedAt: String = "",
     val content: String = ""
 )

@@ -125,6 +125,7 @@ dependencies {
     implementation androidxLibs.values()
     implementation ankoLibs.values()
     implementation multidexLibs.values()
+    implementation supportLibs.values()
     kapt glideLibs.compiler
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation 'com.google.android.material:material:1.2.1'

@@ -14,12 +14,9 @@ data class Response<T>(
     val message: String = "",
     val code: String = "",
     val status: String = "",
-
     @SerializedName("sources", alternate = ["articles"])
-//    @SerializedName("sources")
     val content: T,
-
-
+    @SerializedName("totalResults")
     val totalResults: Int = 0
 )
 

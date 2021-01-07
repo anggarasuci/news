@@ -20,12 +20,12 @@ class GetArticlesUseCase(
         page: Int = 1,
         rows: Int = Constant.PageSize,
         keyword: String = "",
-        sources: String = ""): RequestArticles {
+        sourceId: String = ""): RequestArticles {
         return RequestArticles(
             keyword = keyword,
             rows = rows,
             pages = page,
-            sourceId = sources
+            sourceId = sourceId
         )
     }
 }
