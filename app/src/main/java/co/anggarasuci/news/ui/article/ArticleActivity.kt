@@ -1,7 +1,6 @@
 package co.anggarasuci.news.ui.article
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.anggarasuci.news.R
@@ -9,9 +8,13 @@ import co.anggarasuci.news.base.BaseActivity
 import co.anggarasuci.news.data.model.Article
 import co.anggarasuci.news.ui.article.ArticleViewModel.Event
 import co.anggarasuci.news.ui.article.ArticleViewModel.State
+import co.anggarasuci.news.ui.webview.WebViewActivity
 import co.anggarasuci.news.util.RecyclerViewLoadMoreScroll
+import co.anggarasuci.news.util.afterTextChanged
 import co.anggarasuci.news.util.subscribeSingleLiveEvent
 import kotlinx.android.synthetic.main.article_activity.*
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.longToast
 import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -20,7 +23,6 @@ class ArticleActivity: BaseActivity() {
     private lateinit var _loadMoreScroll: RecyclerViewLoadMoreScroll
     private val _articleAdapter by lazy { ArticleAdapter { onItemClick(it) } }
     private val _sourceId by lazy { intent?.getStringExtra(SOURCE_ID) ?: "" }
-    private val _source by lazy { intent?.getStringExtra(SOURCE) ?: "" }
 
 
     override fun getScreenName() = javaClass.simpleName
@@ -37,13 +39,13 @@ class ArticleActivity: BaseActivity() {
     }
 
     override fun setupViewEvent() {
-
+        search_edt?.afterTextChanged { _viewModel.onEventReceived(Event.OnFilter(it)) }
     }
 
     override fun subscribeState() {
         subscribeSingleLiveEvent(_viewModel.state) {
             when (it) {
-                is State.Error -> toast(it.message)
+                is State.Error -> longToast(it.message)
                 is State.ShowData -> onShowData(it.data, it.isFirstPage)
                 is State.ShowLoading -> progress?.isVisible = it.isLoading
             }
@@ -74,19 +76,15 @@ class ArticleActivity: BaseActivity() {
     }
 
     private fun onItemClick(url: String) {
-
+        val params = WebViewActivity.withActivityData(url)
+        startActivity(intentFor<WebViewActivity>(*params))
     }
 
     companion object {
         const val SOURCE_ID = ".sourceId"
-        const val SOURCE = ".source"
 
-        fun withActivityData(sourceId: String, source: String):
-                Array<Pair<String, *>> {
-            return arrayOf(
-                SOURCE_ID to sourceId,
-                SOURCE to source
-            )
+        fun withActivityData(sourceId: String): Array<Pair<String, *>> {
+            return arrayOf(SOURCE_ID to sourceId)
         }
     }
 }

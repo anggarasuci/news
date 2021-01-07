@@ -1,7 +1,6 @@
 package co.anggarasuci.news.ui.source
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +15,7 @@ import co.anggarasuci.news.ui.source.SourcesViewModel.State
 import co.anggarasuci.news.ui.source.SourcesViewModel.Event
 import co.anggarasuci.news.util.subscribeSingleLiveEvent
 import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.longToast
 import org.jetbrains.anko.toast
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -47,7 +47,7 @@ class SourcesActivity: BaseActivity() {
     override fun subscribeState() {
         subscribeSingleLiveEvent(_viewModel.state) {
             when (it) {
-                is State.Error -> toast(it.message)
+                is State.Error -> longToast(it.message)
                 is State.ShowData -> onShowData(it.data)
                 is State.ShowLoading -> progress?.isVisible = it.isLoading
             }
@@ -84,7 +84,7 @@ class SourcesActivity: BaseActivity() {
     }
 
     private fun onSourceItemClick(id: String) {
-        val params = ArticleActivity.withActivityData(sourceId = id, source = "")
+        val params = ArticleActivity.withActivityData(id)
         startActivity(intentFor<ArticleActivity>(*params))
     }
 }
