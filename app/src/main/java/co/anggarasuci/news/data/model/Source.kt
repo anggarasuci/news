@@ -4,7 +4,8 @@ package co.anggarasuci.news.data.model
 data class RequestSources(
     val keyword: String = "",
     val pages: Int = 0,
-    val rows: Int = 0
+    val rows: Int = 0,
+    val category: String = ""
 )
 
 data class ResponseSources(

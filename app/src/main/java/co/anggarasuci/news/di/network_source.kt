@@ -69,7 +69,6 @@ fun createOkHttpClient(context: Context): OkHttpClient {
 fun createGson(): Gson {
     val builder = GsonBuilder()
         .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-//        .registerTypeAdapterFactory(GsonCustomTypeAdapter.Factory)
     return builder.setLenient().create()
 }
 
