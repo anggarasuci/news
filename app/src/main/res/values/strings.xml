@@ -2,7 +2,7 @@
     <string name="app_name">News</string>
     <string name="not_found">Data Not Found</string>
     <string name="all_article_loaded">All Article Has Loaded</string>
-    <string name="source_notes">NOTES: endless scroll is not implemented on this page because the endpoint "https://newsapi.org/v2/sources" does not support pagination parameters</string>
+    <string name="source_notes">NOTES: endless scroll and search keyword is not implemented on this page because the endpoint "https://newsapi.org/v2/sources" does not support pagination and keyword parameters.</string>
     <string name="hint_search">Search Article</string>
 
     <string-array name="categories_array">
