@@ -12,10 +12,12 @@ class NewsRemoteDataSource(
 ) {
     private var baseUrl = BuildConfig.APP_SERVICE_BASE_URL
 
-    suspend fun getSources(param: RequestSources): Result<Response<ResponseSources>> {
-        val paramsMap = hashMapOf(Param.CategoryParam to param.category)
+    suspend fun getSources(param: RequestSources): Result<Response<List<Source>>> {
+        val paramsMap = hashMapOf(Param.CategoryParam to param.category,
+        "language" to "en")
+
         val url = baseUrl.plus(NewsService.ENDPOINT_SOURCES)
-        return ResponseParser<ResponseSources>().parseResult(
+        return ResponseParser<List<Source>>().parseResult(
             newsService.getSourcesAsync(url, paramsMap))
     }
 

@@ -9,10 +9,10 @@ import co.anggarasuci.news.data.model.Source
 import co.anggarasuci.news.util.RecyclerViewLoadMoreScroll
 import com.afollestad.materialdialogs.utils.MDUtil.getStringArray
 import kotlinx.android.synthetic.main.sources_activity.*
-import org.koin.android.viewmodel.ext.android.viewModel
 import co.anggarasuci.news.ui.source.SourcesViewModel.State
 import co.anggarasuci.news.ui.source.SourcesViewModel.Event
 import co.anggarasuci.news.util.subscribeSingleLiveEvent
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class SourcesActivity: BaseActivity() {
     private val _viewModel: SourcesViewModel by viewModel()
@@ -43,7 +43,7 @@ class SourcesActivity: BaseActivity() {
         subscribeSingleLiveEvent(_viewModel.state) {
             when (it) {
                 is State.Error -> { }
-                is State.ShowData -> { }
+                is State.ShowData -> onShowData(it.data)
                 is State.ShowLoading -> { }
             }
         }
