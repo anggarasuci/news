@@ -5,7 +5,6 @@
     android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="@dimen/space_x2"
         android:id="@+id/tab_rv"
@@ -13,13 +12,24 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <TextView
+        android:id="@+id/notes"
+        style="@style/FontMedium.Cerise.12"
+        android:layout_width="@dimen/space_x0"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space_x2"
+        android:text="@string/source_notes"
+        app:layout_constraintTop_toBottomOf="@id/tab_rv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
         android:layout_marginTop="@dimen/space_x2"
         android:layout_width="match_parent"
         android:layout_height="@dimen/space_x0"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tab_rv" />
+        app:layout_constraintTop_toBottomOf="@id/notes" />
 
     <View
         android:id="@+id/guideline"

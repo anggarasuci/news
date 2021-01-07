@@ -33,16 +33,16 @@ class SourcesViewModel(private val getSourcesUseCase: GetSourcesUseCase) : BaseV
         }
     }
 
-    private fun handleOnCreate() = launch {
+    private fun handleOnCreate() {
         getListSources()
     }
 
-    private fun handleCategoryClick(category: String) = launch {
+    private fun handleCategoryClick(category: String) {
         _category = category
         getListSources()
     }
 
-    private suspend fun getListSources() {
+    private fun getListSources() = launch {
         setState(State.ShowLoading(true))
         val params = getSourcesUseCase.createParams(category = _category)
         when (val result = getSourcesUseCase.execute(params)) {

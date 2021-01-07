@@ -1,11 +1,13 @@
 package co.anggarasuci.news.ui.article
 
+import android.os.Handler
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import co.anggarasuci.news.base.BaseViewModel
 import co.anggarasuci.news.data.model.Article
 import co.anggarasuci.news.domain.GetArticlesUseCase
 import co.anggarasuci.news.domain.Result
+import co.anggarasuci.news.util.Constant
 import co.anggarasuci.news.util.wrapper.EventWrapper
 import kotlinx.coroutines.launch
 
@@ -14,7 +16,6 @@ class ArticleViewModel(private val getArticlesUseCase: GetArticlesUseCase) : Bas
         data class OnCreate(val sourceId: String) : Event()
         object OnLoadMore: Event()
         data class OnFilter(val keyword: String) : Event()
-        object OnRefresh : Event()
     }
 
     sealed class State {
@@ -29,43 +30,43 @@ class ArticleViewModel(private val getArticlesUseCase: GetArticlesUseCase) : Bas
     private var _currentPage = 1
     private var _keyword = ""
     private var _sourceId = ""
+    private val _handler = Handler()
+    private val _delay = 600L // 0.6 second
 
     fun onEventReceived(event: Event) {
         when (event) {
             is Event.OnCreate -> handleOnCreate(event.sourceId)
             Event.OnLoadMore -> handleLoadMore()
             is Event.OnFilter -> handleOnFilter(event.keyword)
-            Event.OnRefresh -> handleOnRefresh()
         }
     }
 
-    private fun handleOnCreate(sourceId: String) = launch {
+    private fun handleOnCreate(sourceId: String) {
         _sourceId = sourceId
         _keyword = ""
         getListArticle(true)
     }
 
-    private fun handleLoadMore() = launch {
+    private fun handleLoadMore() {
         getListArticle(false)
     }
 
-    private fun handleOnFilter(keyword: String) = launch {
+    private fun handleOnFilter(keyword: String) {
         _keyword = keyword
-        getListArticle(true)
+        _handler.removeCallbacksAndMessages(null)
+        _handler.postDelayed({
+            getListArticle(true)
+        }, _delay)
     }
 
-    private fun handleOnRefresh() = launch {
-        getListArticle(true)
-    }
-
-    private suspend fun getListArticle(isFirstPage: Boolean) {
+    private fun getListArticle(isFirstPage: Boolean) = launch {
         setState(State.ShowLoading(true))
         if (isFirstPage) _currentPage = 1
         val params = getArticlesUseCase.createParams(
             page = _currentPage,
             keyword = _keyword,
             sourceId = _sourceId,
-            rows = 3)
+            rows = Constant.PageSize)
         when (val result = getArticlesUseCase.execute(params)) {
             is Result.Success -> {
                 val articles = if (!result.value.articles.isNullOrEmpty()) result.value.articles else emptyList()
