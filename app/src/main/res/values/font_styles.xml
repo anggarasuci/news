@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="FontRegular">
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+    </style>
+
+    <style name="FontMedium">
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+    </style>
+
+    <style name="FontSemiBold">
+        <item name="android:fontFamily">@font/montserrat_semibold</item>
+    </style>
+
+    <style name="FontBold">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+
+
+    <style name="FontRegular.Mortar">
+        <item name="android:textColor">@color/mortar</item>
+    </style>
+
+    <style name="FontRegular.Midnight">
+        <item name="android:textColor">@color/midnight</item>
+    </style>
+
+    <style name="FontBold.Midnight">
+        <item name="android:textColor">@color/midnight</item>
+    </style>
+
+    <style name="FontRegular.Midnight.12">
+        <item name="android:textSize">@dimen/text_size_12sp</item>
+    </style>
+
+    <style name="FontRegular.Mortar.14">
+        <item name="android:textSize">@dimen/text_size_14sp</item>
+    </style>
+
+    <style name="FontBold.Midnight.16">
+        <item name="android:textSize">@dimen/text_size_16sp</item>
+    </style>
+</resources>
