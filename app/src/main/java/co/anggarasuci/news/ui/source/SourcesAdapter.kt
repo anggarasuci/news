@@ -27,11 +27,11 @@ class SourcesAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder?.apply {
+        holder.apply {
             val model = _items[adapterPosition]
             name?.text = model.name
             description?.text = model.description
-            categoryName?.text = model.category
+            categoryName?.text = model.category.capitalize().trim()
             container?.setOnClickListener { onItemClicked(model.id) }
         }
     }
@@ -42,10 +42,8 @@ class SourcesAdapter(
     }
 
     fun addData(sources: List<Source>?) {
-        sources?.let {
-            _items.addAll(it)
-            notifyItemInserted(_items.size)
-        }
+        sources?.let { _items.addAll(it) }
+        notifyDataSetChanged()
     }
 
     fun clear() {

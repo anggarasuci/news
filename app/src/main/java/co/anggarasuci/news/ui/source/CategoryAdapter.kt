@@ -26,15 +26,17 @@ class CategoryAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val titleValue = categories[position]
-        holder?.labelCategory?.apply {
-            isActive = selectedFilter == position
-            title = titleValue
+        holder.apply {
+            val titleValue = categories[adapterPosition]
+            labelCategory?.apply {
+                isActive = selectedFilter == position
+                title = titleValue
 
-            setOnClickListener {
-                isActive = true
-                handleItemPressed(position)
-                onItemClicked(titleValue)
+                setOnClickListener {
+                    isActive = true
+                    handleItemPressed(position)
+                    onItemClicked(if (adapterPosition == 0) "" else titleValue)
+                }
             }
         }
     }

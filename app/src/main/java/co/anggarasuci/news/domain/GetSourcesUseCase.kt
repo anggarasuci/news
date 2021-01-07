@@ -2,6 +2,7 @@ package co.anggarasuci.news.domain
 
 import co.anggarasuci.news.data.model.RequestSources
 import co.anggarasuci.news.data.model.ResponseSources
+import co.anggarasuci.news.data.model.Source
 import co.anggarasuci.news.data.repository.NewsRepository
 import co.anggarasuci.news.domain.Result
 import co.anggarasuci.news.domain.UseCase
