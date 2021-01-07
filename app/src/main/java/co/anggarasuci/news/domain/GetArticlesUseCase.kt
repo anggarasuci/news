@@ -25,7 +25,7 @@ class GetArticlesUseCase(
             keyword = keyword,
             rows = rows,
             pages = page,
-            sources = sources
+            sourceId = sources
         )
     }
 }

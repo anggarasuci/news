@@ -5,7 +5,7 @@ data class RequestArticles(
     val keyword: String = "",
     val pages: Int = 0,
     val rows: Int = 0,
-    val sources: String = ""
+    val sourceId: String = ""
 )
 
 data class ResponseArticles(

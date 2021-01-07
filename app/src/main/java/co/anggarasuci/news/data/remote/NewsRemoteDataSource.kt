@@ -24,7 +24,7 @@ class NewsRemoteDataSource(
             Param.SearchParam to param.keyword,
             Param.PageParam to param.pages.toString(),
             Param.RowParam to param.rows.toString(),
-            Param.SourceParam to param.sources
+            Param.SourceParam to param.sourceId
         )
         val url = baseUrl.plus(NewsService.ENDPOINT_HEADLINE)
         return ResponseParser<ResponseArticles>().parseResult(
